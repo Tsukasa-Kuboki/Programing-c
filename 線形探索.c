@@ -1,8 +1,8 @@
+//共通
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-static inline long long read_ll(void){                           //例：2018-1（偶数の個数）の完成形
+static inline long long read_ll(void){
   int c = getchar_unlocked();
   while (c <= ' ' && c != EOF) c = getchar_unlocked();
   long long x = 0;
@@ -10,9 +10,12 @@ static inline long long read_ll(void){                           //例：2018-1�
   return x;
 }
 
-int main(void){
-  freopen("A.txt","r",stdin);   // ★ここだけファイル名を合わせる
 
+/*1) 全走査（for 1本）系：攻略コード
+1-A) 2018-1：20000個のうち偶数の個数
+  */
+
+int main(void){
   int cnt = 0;
   for(int i=0;i<20000;i++){
     long long x = read_ll();
@@ -23,40 +26,19 @@ int main(void){
 }
 
 
-//問題	整数が 配列として順番に並んでいる
-//最後の要素を x とする
-//	配列の先頭から見ていって
-//   x と同じ値が最初に出てくる位置（インデックス）を出力
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-static inline long long read_ll(void){
-  int c = getchar_unlocked();
-  while (c <= ' ' && c != EOF) c = getchar_unlocked();
-  long long x = 0;
-  while (c > ' ') { x = x*10 + (c - '0'); c = getchar_unlocked(); }
-  return x;
-}
-
+//1-B) 2023-1：最後の値 x と一致する最初の位置
 int main(void){
-  freopen("A.txt","r",stdin);
+  const int n = 10001;
+  long long a[n];
+  for(int i=0;i<n;i++) a[i] = read_ll();
+  long long x = a[n-1];
 
-  long long a[10001];
-
-  for(int i = 0; i < 10001; i++){
-    a[i] = read_ll();
-  }
-
-  long long x = a[10000];
-
-  for(int i = 0; i < 10001; i++){
+  for(int i=0;i<n;i++){
     if(a[i] == x){
       printf("%d\n", i);
       break;
     }
   }
-
   return 0;
 }
+  
