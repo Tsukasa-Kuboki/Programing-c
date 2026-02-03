@@ -1,3 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+static inline long long read_ll(void){
+  int c = getchar_unlocked();
+  while (c <= ' ' && c != EOF) c = getchar_unlocked();
+  long long x = 0;
+  while (c > ' ') { x = x*10 + (c - '0'); c = getchar_unlocked(); }
+  return x;
+}
+
 /*
 2) ソート系：qsort禁止でもOKな攻略コード（自作マージソート）
 2-0) 自作マージソート（long long用）※固定で貼る
